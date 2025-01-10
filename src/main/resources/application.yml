@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: Mbank
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/mbank
+    username: postgres
+    password: postgres
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+
+server:
+  error:
+    include-stacktrace: always
+  port: 8888
+
+app:
+  jwt:
+    secret: Employees

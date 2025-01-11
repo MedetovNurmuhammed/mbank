@@ -6,9 +6,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
-import mb.config.jwt.JwtService;
 import mb.entities.User;
-import mb.repository.UserRepository;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -31,7 +29,7 @@ public class JwtFilter extends OncePerRequestFilter {
         String headerToken = request.getHeader(HttpHeaders.AUTHORIZATION);
 
         String bearer = "Bearer ";
-        if (headerToken != null && headerToken.startsWith(bearer)){
+        if (headerToken != null && headerToken.startsWith(bearer)) {
             String token = headerToken.substring(bearer.length());
 
             try {
@@ -46,7 +44,7 @@ public class JwtFilter extends OncePerRequestFilter {
                                         user.getAuthorities()
                                 )
                         );
-            }catch (JWTVerificationException e){
+            } catch (JWTVerificationException e) {
                 response.sendError(HttpServletResponse.SC_FORBIDDEN,
                         "Invalid JWT Token");
             }

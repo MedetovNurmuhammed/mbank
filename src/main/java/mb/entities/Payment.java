@@ -18,7 +18,5 @@ public class Payment {
     private LocalDateTime timestamp = LocalDateTime.now();
     @ManyToOne
     private User user;
-
-    // Getters and setters
 }
 

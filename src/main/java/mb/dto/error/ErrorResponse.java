@@ -14,4 +14,5 @@ public class ErrorResponse {
                 "<type>" + error + "</type>" +
                 "<message>" + message + "</message>" +
                 "</error>";
-}}
+    }
+}

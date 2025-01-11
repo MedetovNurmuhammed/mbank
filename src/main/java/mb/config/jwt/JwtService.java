@@ -15,7 +15,7 @@ public class JwtService {
     @Value("${app.jwt.secret}")
     private String secretKey;
 
-    public String createToken(User user){
+    public String createToken(User user) {
         return JWT.create()
                 .withClaim("email", user.getUsername())
                 .withClaim("role", user.getRole().name())
@@ -25,7 +25,7 @@ public class JwtService {
                 .sign(Algorithm.HMAC512(secretKey));
     }
 
-    public String verifyToken(String token){
+    public String verifyToken(String token) {
         JWTVerifier jwtVerify = JWT.require(Algorithm.HMAC512(secretKey)).build();
         DecodedJWT decodedJWT = jwtVerify.verify(token);
         return decodedJWT.getClaim("email").asString();
